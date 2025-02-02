@@ -7,9 +7,9 @@ from flask_wtf.recaptcha import RecaptchaField
 from datetime import timedelta
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'  # Update with a secure secret key
-app.config['RECAPTCHA_PUBLIC_KEY'] = 'your_recaptcha_public_key_here'
-app.config['RECAPTCHA_PRIVATE_KEY'] = 'your_recaptcha_private_key_here'
+app.secret_key = '6Lc_fcoqAAAAAD6hz9mOMvrfljZPSaLKKMnPeMRm'  # Update with a secure secret key
+app.config['RECAPTCHA_PUBLIC_KEY'] = '6Lc_fcoqAAAAAEcZvCLaHLm-RqBpKXNB6uqM6IRC'
+app.config['RECAPTCHA_PRIVATE_KEY'] = '6Lc_fcoqAAAAAD6hz9mOMvrfljZPSaLKKMnPeMRm'
 app.permanent_session_lifetime = timedelta(minutes=30)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 
