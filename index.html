@@ -3,10 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İRP Sağlık Bakanlığı</title>
+    <title>Giriş Sayfası</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>İRP Sağlık Bakanlığı Website'sine hoşgeldiniz.</h1>
-    <p>Bu bir test versiyondur.</p>
+    <div class="container">
+        <h1>Giriş Sayfası</h1>
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('personel')">Personel Giriş</button>
+            <button class="tab-button" onclick="showTab('admin')">Admin Giriş</button>
+        </div>
+        <div class="tab-content" id="personel">
+            <form method="POST">
+                {{ login_form.hidden_tag() }}
+                <div class="form-group">
+                    {{ login_form.password.label }}
+                    {{ login_form.password(class_='form-control') }}
+                </div>
+                {{ login_form.submit(class_='btn btn-primary') }}
+            </form>
+        </div>
+        <div class="tab-content" id="admin" style="display:none;">
+            <form method="POST">
+                {{ admin_form.hidden_tag() }}
+                <div class="form-group">
+                    {{ admin_form.key.label }}
+                    {{ admin_form.key(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ admin_form.password.label }}
+                    {{ admin_form.password(class_='form-control') }}
+                </div>
+                {{ admin_form.submit(class_='btn btn-primary') }}
+            </form>
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+              <li class="alert {{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <footer>
+            <p style="color: gray;">©2025 İRP Sağlık Bakanlığı Portalı</p>
+        </footer>
+    </div>
+    <script>
+        function showTab(tab) {
+            document.getElementById('personel').style.display = 'none';
+            document.getElementById('admin').style.display = 'none';
+            document.getElementById(tab).style.display = 'block';
+            var buttons = document.getElementsByClassName('tab-button');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
