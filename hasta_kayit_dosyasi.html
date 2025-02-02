@@ -9,6 +9,9 @@
 <body>
     <div class="container">
         <h1>Hasta Kayıt Dosyası Oluştur</h1>
+        <!-- Boş Şablon Resmi (Görünmez) -->
+        <img src="{{ url_for('static', filename='sablon.png') }}" alt="Boş Şablon" class="template-image" style="display:none;">
+        
         <form method="POST" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <div class="form-group">
