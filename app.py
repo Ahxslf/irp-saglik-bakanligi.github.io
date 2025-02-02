@@ -49,7 +49,7 @@ class HastaKayitForm(FlaskForm):
 
 def save_form_to_image(form_data):
     # Boş şablon fotoğrafını yükle
-    image = Image.open('sablon.png')
+    image = Image.open('static/images/sablon.png')
     draw = ImageDraw.Draw(image)
     font = ImageFont.load_default()
 
