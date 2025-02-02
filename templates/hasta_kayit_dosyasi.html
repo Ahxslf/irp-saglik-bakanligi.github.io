@@ -1,85 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasta Kayıt Dosyası</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>Hasta Kayıt Dosyası Oluştur</h1>
-        <!-- Boş Şablon Resmi (Görünmez) -->
-        <img src="{{ url_for('static', filename='sablon.png') }}" alt="Boş Şablon" class="template-image" style="display:none;">
-        
-        <form method="POST" enctype="multipart/form-data">
-            {{ form.hidden_tag() }}
-            <div class="form-group">
-                <label for="kayit_no">Kayıt No:</label>
-                {{ form.kayit_no(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="tc_no">T.C. Kimlik No:</label>
-                {{ form.tc_no(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="adi">Adı:</label>
-                {{ form.adi(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="soyadi">Soyadı:</label>
-                {{ form.soyadi(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="cinsiyeti">Cinsiyeti:</label>
-                {{ form.cinsiyeti(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="uyrugu">Uyruğu:</label>
-                {{ form.uyrugu(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="dogum_tarihi">Doğum Tarihi:</label>
-                {{ form.dogum_tarihi(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="dogum_yeri">Doğum Yeri:</label>
-                {{ form.dogum_yeri(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="vesikalik">Vesikalık:</label>
-                {{ form.vesikalik(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="aktif_hastaliklar">Aktif Hastalıklar:</label>
-                {{ form.aktif_hastaliklar(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="test_no">Yapıldıysa Test No:</label>
-                {{ form.test_no(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="hastaneye_gelis_sebebi">Hastaneye Geliş Sebebi:</label>
-                {{ form.hastaneye_gelis_sebebi(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="mudahaleler">Müdahaleler:</label>
-                {{ form.mudahaleler(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="mudahale_edenler">Müdahale Edenler:</label>
-                {{ form.mudahale_edenler(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="triyaj">Triyaj:</label>
-                {{ form.triyaj(class_='form-control') }}
-            </div>
-            <div class="form-group">
-                <label for="imza_kase">Dosyayı Tutan İmza - Kaşe:</label>
-                {{ form.imza_kase(class_='form-control') }}
-            </div>
-            <button type="submit" class="btn-primary">Gönder</button>
-        </form>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center text-white">Hasta Kayıt Dosyası Oluşturucu</h1>
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.kayit_no.label }}
+                    {{ form.kayit_no(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.tc_no.label }}
+                    {{ form.tc_no(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.adi.label }}
+                    {{ form.adi(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.soyadi.label }}
+                    {{ form.soyadi(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.cinsiyeti.label }}
+                    {{ form.cinsiyeti(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.uyrugu.label }}
+                    {{ form.uyrugu(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.dogum_tarihi.label }}
+                    {{ form.dogum_tarihi(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.dogum_yeri.label }}
+                    {{ form.dogum_yeri(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.vesikalik.label }}
+                    {{ form.vesikalik(class_='form-control-file') }}
+                </div>
+                <div class="form-group">
+                    {{ form.aktif_hastaliklar.label }}
+                    {{ form.aktif_hastaliklar(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.test_no.label }}
+                    {{ form.test_no(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.hastaneye_gelis_sebebi.label }}
+                    {{ form.hastaneye_gelis_sebebi(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.mudahaleler.label }}
+                    {{ form.mudahaleler(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.mudahale_edenler.label }}
+                    {{ form.mudahale_edenler(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.triyaj.label }}
+                    {{ form.triyaj(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    {{ form.imza_kase.label }}
+                    {{ form.imza_kase(class_='form-control-file') }}
+                </div>
+                <div class="form-group text-center">
+                    {{ form.submit(class_='btn btn-primary btn-lg btn-block') }}
+                </div>
+            </form>
+        </div>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
